@@ -11412,4 +11412,22 @@ Example:
   border-left: 1px #292a30 solid;
 }
 
+textarea {
+  width: 100%;
+  background-color: transparent;
+  color: #fff;
+  border: none;
+  overflow: auto;
+  outline: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  resize: none;
+}
+
+.bg-success,
+.bg-danger {
+  color: #fff;
+}
+
 /*# sourceMappingURL=dist.css.map */

@@ -6,7 +6,12 @@
       <link href="/style/dist.css" rel="stylesheet" />
    </head>
    <body>
-      <div class="container">
+    <div class="bg-success w=100 lead d-flex justify-content-center fixed-top">
+        <img src="icons/success.svg" width="32px">
+        <p class="d-inline py-4 ml-2">Card created!</p>
+    </div>  
+    
+    <div class="container">
          <div class="row">
             <div
                class="col-12 col-xl-6 offset-xl-3 col-lg-8 offset-lg-2 col-md-10 offset-md-1"
@@ -16,25 +21,33 @@
                <button class="btn btn-link float-right">Log out</button>
                <div class="clearfix"></div>
                <div
-                  class="btn-group d-flex mt-1 mb-5"
+                  class="btn-group d-flex mt-1 my-2"
                   role="navigation"
                   aria-label="navigation"
                >
-                  <a href="/create-imagery.html" class="btn btn-secondary">
-                     Create new </a>
+                  <button a href="/create-imagery.html" class="btn tab-active btn-secondary">
+                     Create new
+                     
                   </button>
                   <button
                      type="button"
-                     class="btn btn-secondary tab-active tab-separator"
-                  >
+                     class="btn btn-secondary tab-separator">
                      Review
                   </button>
                   <button type="button" class="btn btn-secondary tab-separator">
                      All cards
                   </button>
                </div>
+               <p class="text-center lead text-muted my-2"> Add memorable imagery</p>
                <div class="card">
                   <div class="card-body bg-primary lead">
+                    <textarea rows="6" class="d-md-none"autofocus></textarea>
+                    <textarea rows="11" class="d-none d-md-block" autofocus></textarea>
+                  </div>
+               </div>
+               <div class="card">
+                  <div class="card-body bg-secondary lead">
+                    
                      Far far away, behind the word mountains, far from the
                      countries Vokalia and Consonantia, there live the blind
                      texts. Separated they live in Bookmarksgrove right at the
@@ -43,21 +56,14 @@
                      the necessary regelialia
                   </div>
                </div>
-               <div class="card">
-                  <div class="card-body bg-secondary lead">
-                     It is a paradisematic country, in which roasted parts of
-                     sentences fly into your mouth. Even the all-powerful
-                     Pointing has no control about the blind texts it
-                  </div>
-               </div>
-
-               <button class="btn btn-link">Edit Card</button>
-               <div class="float-right">
-               <button class="btn btn-outline-primary">Needs work</button>
-               <button class="btn btn-primary ml-4">
-                   <img src="icons/thumbs-up.svg" width="20px" style="margin-bottom: 5px; margin-right: 4px"/>Got it</button>
+                        <p class="float-right mt-2 mb-5"> 0/240</p>
+                        <div class="clearfix"></div>
+               <button class="btn btn-link">Back to answer</button>
+           
+               <button class="btn btn-primary btn-lg ml-4 float-right">
+                   <img src="icons/save.svg" width="20px" style="margin-bottom: 3px; margin-right: 4px"/>Save</button>
             
-            </div>
+           
          </div>
       </div>
    </body>

@@ -11430,4 +11430,8 @@ textarea {
   color: #fff;
 }
 
+.someclass {
+  background-size: cover;
+}
+
 /*# sourceMappingURL=dist.css.map */

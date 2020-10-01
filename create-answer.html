@@ -12,13 +12,6 @@
         <p class="d-inline py-4 ml-2">Card created!</p>
     </div>  
     
-    <div class="bg-danger w=100 lead d-none justify-content-center fixed-top"
-    id ="overlay-error">
-        <img src="/icons/error.svg" width="32px">
-        <p class="d-inline py-4 ml-2">Oops! Our bad. Please try again.</p>
-    </div> 
-
-
     <div class="container">
          <div class="row">
             <div
@@ -33,10 +26,10 @@
                   role="navigation"
                   aria-label="navigation"
                >
-                  <a href="/create-imagery.html" class="btn tab-active btn-secondary">
+                  <button a href="/create-imagery.html" class="btn tab-active btn-secondary">
                      Create new
                      
-                  </a>
+                  </button>
                   <a href="/index.html"
                   
                   class="btn btn-secondary tab-separator">
@@ -46,35 +39,24 @@
                     All cards
                  </a>
                </div>
-               <p class="text-center lead text-muted my-2"> Add memorable imagery</p>
+               <p class="text-center lead text-muted my-2"> Add an answer</p>
+          
                <div class="card">
-                  <div class="card-body bg-primary lead">
+                  <div class="card-body bg-secondary lead">
+                    
                     <textarea rows="6" class="d-md-none"autofocus></textarea>
                     <textarea rows="11" class="d-none d-md-block" autofocus></textarea>
                   </div>
                </div>
-               <div class="card">
-                  <div class="card-body bg-secondary lead">
-                    
-                     Far far away, behind the word mountains, far from the
-                     countries Vokalia and Consonantia, there live the blind
-                     texts. Separated they live in Bookmarksgrove right at the
-                     coast of the Semantics, a large language ocean. A small
-                     river named Duden flows by their place and supplies it with
-                     the necessary regelialia
-                  </div>
-               </div>
                         <p class="float-right mt-2 mb-5 text-muted"> 0/240</p>
                         <div class="clearfix"></div>
-               <button class="btn btn-link" id="back-card">Back to answer</button>
+             
            
-               <button class="btn btn-primary btn-lg ml-4 float-right" id="save-card">
-                   <img src="icons/save.svg" 
-                   width="20px" 
-                   style="margin-bottom: 3px; margin-right: 4px"/>
-                   Save</button>
+               <a href="/create-imagery.html" class="btn btn-outline-primary btn-lg ml-4 float-right" id="save-card">
+                  
+                  Next</a>
             
-           
+                 
          </div>
       </div>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" 

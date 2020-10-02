@@ -11398,6 +11398,10 @@ h1 {
   font-family: "Noto Serif", serif;
 }
 
+.card-body-cover {
+  padding: 16px;
+}
+
 .card-body.bg-primary {
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;

@@ -224,6 +224,9 @@ $input-padding-x-lg: $input-btn-padding-x-lg;
 $input-font-size-lg: $font-size-base;
 $input-line-height-lg: $line-height-base;
 
+$component-active-bg: theme-color("primary");
+$custom-control-indicator-checked-bg: $component-active-bg;
+
 $text-height: 24px;
 
 $input-height: add(
@@ -239,6 +242,3 @@ $input-height-lg: add(
    $text-height,
    add($input-padding-y-lg * 2, $border-width * 2, false)
 );
-
-$component-active-bg: theme-color("primary");
-$custom-control-indicator-checked-bg: $component-active-bg;

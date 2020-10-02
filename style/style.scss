@@ -45,6 +45,10 @@ h1 {
    color: $white;
    font-family: $font-family-serif;
 }
+
+.card-body-cover {
+   padding: 16px;
+}
 .card-body.bg-primary {
    border-top-left-radius: $border-radius;
    border-top-right-radius: $border-radius;

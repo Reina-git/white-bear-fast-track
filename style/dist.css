@@ -11382,6 +11382,10 @@ h1 {
   color: #fff;
 }
 
+h2 {
+  font-family: "Noto Serif", serif;
+}
+
 .btn-link {
   font-weight: 700;
   padding-left: 0;

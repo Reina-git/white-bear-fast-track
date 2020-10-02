@@ -14,16 +14,21 @@ Example:
 </div>
 
 */
-
-.background-image {
-   /* https://css-tricks.com/perfect-full-page-background-image/ */
-   background: url("../images/background-landing.jpg") no-repeat center center
+.body-cover {
+   background: url("/images/background-landing.jpg") no-repeat center center
       fixed;
+   -webkit-background-size: cover;
+   -moz-background-size: cover;
    background-size: cover;
-   min-height: 100vh;
+   -o-background-size: cover;
 }
+
 .text-brand {
    font-family: $font-family-brand;
+}
+
+h1 {
+   color: $white;
 }
 
 .btn-link {

@@ -10,7 +10,7 @@ $("#show-delete").click(function () {
    $("#delete-button").toggleClass("d-flex d-none");
 });
 
-$(".sign-up").click(function () {
-   $(".email").toggle();
-   $(".sign-up").toggleClass("d-flex d-none");
+$("#sign-up-button").click(function () {
+   $("#sign-up-card").toggle();
+   $("#sign-up-button").toggleClass("d-flex d-none");
 });

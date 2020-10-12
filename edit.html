@@ -41,22 +41,19 @@
                <p class="text-center lead text-muted my-2">Edit card</p>
                <div class="card">
                   <div class="card-body bg-primary lead">
-                     Far far away, behind the word mountains, far from the
-                     countries Vokalia and Consonantia, there live the blind
-                     texts. Separated they live in Bookmarksgrove right at the
-                     coast of the Semantics, a large language ocean. A small
-                     river named Duden flows by their place and supplies it with
-                     the necessary regelialia
+               
+                    <textarea rows="8" id="edit-imagery-input" autofocus></textarea>
                   </div>
                </div>
                <div class="card">
                   <div class="card-body bg-secondary lead">
-                     It is a paradisematic country, in which roasted parts of
-                     sentences fly into your mouth. Even the all-powerful
-                     Pointing has no control about the blind texts it
+                     <textarea rows="8" id="edit-answer-input" autofocus></textarea>
                   </div>
                </div>
-               <p class="float-right mt-2 mb-5 text-muted">0/240</p>
+               <div class="float-right mt-2 mb-5 text-muted d-flex">
+               <p class=>Top: <span id="edit-imagery-char-count">0</span>/240        Bottom: <span id="edit-answer-char-count">0</span>/240</p>
+</div>
+
                <div class="clearfix"></div>
                <!-- save button-->
                <a href="all-cards.html" class="btn btn-link">Discard changes</a>

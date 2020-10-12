@@ -49,8 +49,8 @@
                <p class="text-center lead text-muted my-2"> Add memorable imagery</p>
                <div class="card">
                   <div class="card-body bg-primary lead">
-                    <textarea rows="6" class="d-md-none"autofocus></textarea>
-                    <textarea rows="11" class="d-none d-md-block" autofocus></textarea>
+                    <!-- <textarea rows="6" class="d-md-none"autofocus></textarea> -->
+                    <textarea rows="11" id="create-imagery-input" autofocus></textarea>
                   </div>
                </div>
                <div class="card">
@@ -64,8 +64,14 @@
                      the necessary regelialia
                   </div>
                </div>
-                        <p class="float-right mt-2 mb-5 text-muted"> 0/240</p>
+
+
+                        <p class="float-right mt-2 mb-5 text-muted"><span id="imagery-char-count">0</span>/240</p>
                         <div class="clearfix"></div>
+
+
+
+
                <button class="btn btn-link" id="back-card">Back to answer</button>
            
                <button class="btn btn-primary btn-lg ml-4 float-right" id="save-card">

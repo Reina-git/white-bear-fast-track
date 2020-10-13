@@ -17,10 +17,29 @@ $("#sign-up-button").click(function () {
 
 let createImageryInputCharsCount = 0;
 
-$("#create-imagery-input").keypress(function () {
-   console.log("let's add 1");
-   createImageryInputCharsCount += 1;
+$("#create-imagery-input").keydown(function (e) {
+   const key = e.which;
+   console.log(key);
 
+   // If the key the user pressed is a backspace, decrement the count
+   if (key === 8) {
+      console.log("the user pressed backspace");
+      createImageryInputCharsCount--;
+      if (createImageryInputCharsCount < 0) {
+         console.log("you are negative");
+         createImageryInputCharsCount = 0;
+      }
+   } else if (key === 16) {
+      console.log("shift was pressed.");
+   } else if (key === 18) {
+      console.log("alt was pressed.");
+   } else if (key === 91) {
+      console.log("command");
+   } else {
+      // else, increment the count
+      console.log("the user pressed any other key");
+      createImageryInputCharsCount += 1;
+   }
    console.log("Total inoutted chars: ", createImageryInputCharsCount);
    $("#imagery-char-count").html(createImageryInputCharsCount);
 });

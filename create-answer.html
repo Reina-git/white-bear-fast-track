@@ -37,20 +37,21 @@
                </div>
                <p class="text-center lead text-muted my-2"> Add an answer</p>
           
+              
                <div class="card">
                   <div class="card-body bg-secondary lead">
-                    
-                    
-                    <textarea rows="11" class="d-none d-md-block" id="create-answer-input" autofocus></textarea>
+                    <!-- <textarea rows="6" class="d-md-none"autofocus></textarea> -->
+                    <textarea rows="11" id="create-answer-input" autofocus></textarea>
                   </div>
                </div>
-                        <p class="float-right mt-2 mb-5 text-muted"> <span id="answer-char-count">0</span>/240</p>
+                        
+                        <p class="float-right mt-2 mb-5 text-muted" id="char-count"><span id="answer-char-count">0</span>/240</p>
                         <div class="clearfix"></div>
              
            
-               <a href="/create-imagery.html" class="btn btn-outline-primary btn-lg ml-4 float-right" id="save-card">
+               <button href="/create-imagery.html" class="btn btn-outline-primary btn-lg ml-4 float-right" disabled="true" id="save-card">
                   
-                  Next</a>
+                  Next</button>
             
                  
          </div>

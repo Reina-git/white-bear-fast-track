@@ -39,35 +39,55 @@
                   </a>
                </div>
                <p class="text-center lead text-muted my-2">Edit card</p>
-               <div class="card">
-                  <div class="card-body bg-primary lead">
-               
-                    <textarea rows="8" id="edit-imagery-input" autofocus></textarea>
+               <div id="edit-cards-total">
+                  <div class="card">
+                     <div class="card-body bg-primary lead">
+                        <textarea
+                           rows="8"
+                           id="edit-imagery-input"
+                           autofocus
+                        ></textarea>
+                     </div>
+                  </div>
+                  <div class="card">
+                     <div class="card-body bg-secondary lead">
+                        <textarea
+                           rows="8"
+                           id="edit-answer-input"
+                           autofocus
+                        ></textarea>
+                     </div>
                   </div>
                </div>
-               <div class="card">
-                  <div class="card-body bg-secondary lead">
-                     <textarea rows="8" id="edit-answer-input" autofocus></textarea>
-                  </div>
+               <div
+                  class="float-right mt-2 mb-5 text-muted d-flex"
+                  id="Top-Bottom-Counter"
+               >
+                  <p class>
+                     Top: <span id="edit-imagery-char-count">0</span>/240
+                     Bottom: <span id="edit-answer-char-count">0</span>/240
+                  </p>
                </div>
-               <div class="float-right mt-2 mb-5 text-muted d-flex">
-               <p class=>Top: <span id="edit-imagery-char-count">0</span>/240        Bottom: <span id="edit-answer-char-count">0</span>/240</p>
-</div>
 
                <div class="clearfix"></div>
                <!-- save button-->
                <a href="all-cards.html" class="btn btn-link">Discard changes</a>
                <div class="float-right">
-                  <a href="all-cards.html" class="btn btn-primary ml-4">
+                  <button
+                     href="all-cards.html"
+                     id="save-card"
+                     disabled="true"
+                     class="btn btn-primary ml-4"
+                  >
                      <img
                         src="icons/save.svg"
                         width="20px"
                         style="margin-bottom: 5px; margin-right: 4px"
                      />Save
-                  </a>
+                  </button>
                </div>
                <div class="clearfix"></div>
-<!-- card properties-->
+               <!-- card properties-->
                <p class="text-center lead text-muted mt-5 mb-3">
                   Card properties
                </p>
@@ -97,28 +117,28 @@
                      <p>4</p>
                   </div>
                </div>
-<div class="row">
-               <div class="col-12 mt-3">
-                  <div class="custom-control custom-checkbox">
-                     <input
-                     type="checkbox"
-                     class="custom-control-input"
-                     id="show-delete"
-                     />
-                     <label class="custom-control-label" for="show-delete">
-                        Show delete button
-                     </label>
-                  </div>
+               <div class="row">
+                  <div class="col-12 mt-3">
+                     <div class="custom-control custom-checkbox">
+                        <input
+                           type="checkbox"
+                           class="custom-control-input"
+                           id="show-delete"
+                        />
+                        <label class="custom-control-label" for="show-delete">
+                           Show delete button
+                        </label>
+                     </div>
 
-                  <div class="mt-4 mb-3">
-                     <button
-                        class="btn btn-outline-danger d-none"
-                        id="delete-button"
-                     >
-                        Delete this card
-                     </button>
+                     <div class="mt-4 mb-3">
+                        <button
+                           class="btn btn-outline-danger d-none"
+                           id="delete-button"
+                        >
+                           Delete this card
+                        </button>
+                     </div>
                   </div>
-                  
                </div>
             </div>
          </div>

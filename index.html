@@ -1,7 +1,7 @@
 <html lang="en">
    <head>
       <meta charset="UTF-8" />
-      <meta name="viewport" content="width=>, initial-scale=1.0" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <title>White Bear Landing Page</title>
       <link href="/style/dist.css" rel="stylesheet" />
    </head>
@@ -35,29 +35,42 @@
 
                      <div class="input-group mb-3 mt-2">
                         <input
+                           style=""
                            type="text"
+                           id="email-sign-up"
                            class="form-control"
                            aria-label="Sizing example input"
                            aria-describedby="inputGroup-sizing-default"
                         />
                      </div>
-
+                     <p class="text-danger lead mt-2 d-none" id="enterEmail">
+                        Please enter your email address.
+                     </p>
                      <p class="text-muted mt-3 lead">Create a password</p>
 
                      <div class="input-group mb-3 mt-2">
                         <input
+                           style=""
                            type="text"
-                           class="form-control"
+                           class="form-control .is-invalid"
+                           id="password-sign-up"
                            aria-label="Sizing example input"
                            aria-describedby="inputGroup-sizing-default"
                         />
                      </div>
+                     <p class="text-danger lead mt-2 d-none" id="passwordLenth">
+                        Your password must be at least 9 characters.
+                     </p>
+                     <p class="text-danger lead mt-2 d-none" id="enterPassword">
+                        Please create a password.
+                     </p>
 
-                     <a
-                        href="create-answer.html"
+                     <button
                         class="btn btn-success btn-block mt-5"
-                        >Let's go!</a
+                        id="letsGoButton"
                      >
+                        Let's go!
+                  </button>
                   </div>
                </div>
             </div>

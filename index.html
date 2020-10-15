@@ -58,7 +58,11 @@
                            aria-describedby="inputGroup-sizing-default"
                         />
                      </div>
-                     <p class="text-danger lead mt-2 d-none" id="passwordLenth">
+                     <p
+                        class="lead d-none mt-2 text-danger"
+                        id="password-error"
+                     ></p>
+                     <!-- <p class="text-danger lead mt-2 d-none" id="passwordLenth">
                         Your password must be at least 9 characters.
                      </p>
                      <p class="text-danger lead mt-2 d-none" id="enterPassword">
@@ -70,7 +74,7 @@
                      >
                         All or part of your email address cannot be used in your
                         password.
-                     </p>
+                     </p> -->
 
                      <button
                         class="btn btn-success btn-block mt-5"
@@ -127,4 +131,5 @@
       defer
    ></script>
    <script src="/script.js" defer></script>
+   <script src="/mostInsecurePasswords.js" defer></script>
 </html>

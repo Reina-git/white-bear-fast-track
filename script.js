@@ -1,5 +1,6 @@
 $("#save-card").click(function () {
    $("#overlay-success").toggleClass("d-flex d-none");
+   console.log("Here are the most insecure passwords:", mostInsecurePasswords);
 });
 
 $("#back-card").click(function () {
@@ -20,7 +21,7 @@ $("#create-imagery-input").keyup(function (e) {
    const text = e.target.value;
    // check the length of the text
    const textLength = text.length;
-   if (textLength > 240 || textLength < 1) {
+   if (textLength > 240 || textLength === 0) {
       document.getElementById("save-card").disabled = true;
       document.getElementById("char-count").classList.add("text-danger");
       document.getElementById("char-count").classList.remove("text-muted");
@@ -39,7 +40,7 @@ $("#create-answer-input").keyup(function (e) {
 
    // check the length of the text
    const textLength = text.length;
-   if (textLength > 240 || textLength < 1) {
+   if (textLength > 240 || textLength === 0) {
       $("#save-card").addClass("disabled");
       document.getElementById("char-count").classList.add("text-danger");
       document.getElementById("char-count").classList.remove("text-muted");
@@ -102,6 +103,8 @@ $("#letsGoButton").click(function () {
    const lowerCasedPassword = passwordInput.toLowerCase();
    const trimmedEmail = emailInput.trim();
    const lowerCasedEmail = trimmedEmail.toLowerCase();
+   // can do multiple string methods in one line to one constant
+   const normalizedEmail = emailInput.trim().toLowerCase();
    const delimiter = `@`;
    const indexOfEmail = lowerCasedEmail.indexOf(delimiter);
    const localEmail = emailInput.slice(0, indexOfEmail);
@@ -115,21 +118,30 @@ $("#letsGoButton").click(function () {
       $("#email-sign-up").removeClass("is-invalid");
       // console.log(`The trimmed and normalized email is ${localEmail}.`);
    }
-
+   // If there is no password then error message and red input box
    if (passwordInput.length === 0) {
-      $("#enterPassword").removeClass("d-none");
+      $("#password-error").removeClass("d-none");
+      $("#password-error").html("Please create a password.");
       $("#password-sign-up").addClass("is-invalid");
-   } else if (passwordInput.length < 9 && passwordInput.length > 0) {
+
+      // If the password is too short, then error message and red box but not other error messages
+   } else if (passwordInput.length < 9) {
       $("#passwordLenth").removeClass("d-none");
       $("#password-sign-up").addClass("is-invalid");
       $("#enterPassword").addClass("d-none");
       $("#differentPassword").addClass("d-none");
+
+      // if the password is the same as the first part/ local of the email address and the local part
+      // is longer than 4 characters then error message and red box but not all other errors
    } else if (
       lowerCasedPassword.includes(localEmail) &&
       localEmail.length >= 4
    ) {
       $("#differentPassword").removeClass("d-none");
       $("#password-sign-up").addClass("is-invalid");
+      $("#passwordLenth").addClass("d-none");
+
+      // else no error messages or red boxes
    } else {
       $("#enterPassword").addClass("d-none");
       $("#passwordLenth").addClass("d-none");

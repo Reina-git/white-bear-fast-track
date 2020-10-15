@@ -99,6 +99,13 @@ $("#edit-imagery-input, #edit-answer-input").keyup(function () {
 $("#letsGoButton").click(function () {
    const emailInput = $("#email-sign-up").val();
    const passwordInput = $("#password-sign-up").val();
+   const lowerCasedPassword = passwordInput.toLowerCase();
+   const trimmedEmail = emailInput.trim();
+   const lowerCasedEmail = trimmedEmail.toLowerCase();
+   const delimiter = `@`;
+   const indexOfEmail = lowerCasedEmail.indexOf(delimiter);
+   const localEmail = emailInput.slice(0, indexOfEmail);
+   // console.log(`the local part of ${emailInput} is ${localEmail}.`);
 
    if (emailInput.length < 1) {
       $("#enterEmail").removeClass("d-none");
@@ -106,6 +113,7 @@ $("#letsGoButton").click(function () {
    } else {
       $("#enterEmail").addClass("d-none");
       $("#email-sign-up").removeClass("is-invalid");
+      // console.log(`The trimmed and normalized email is ${localEmail}.`);
    }
 
    if (passwordInput.length === 0) {
@@ -115,94 +123,15 @@ $("#letsGoButton").click(function () {
       $("#passwordLenth").removeClass("d-none");
       $("#password-sign-up").addClass("is-invalid");
       $("#enterPassword").addClass("d-none");
+   } else if (
+      lowerCasedPassword.includes(localEmail) &&
+      localEmail.length >= 4
+   ) {
+      $("#differentPassword").removeClass("d-none");
+      $("#password-sign-up").addClass("is-invalid");
    } else {
       $("#enterPassword").addClass("d-none");
       $("#passwordLenth").addClass("d-none");
       $("#password-sign-up").removeClass("is-invalid");
    }
 });
-
-// $("#letsGoButton").click(function () {
-//    const isEmailInvalid = getEmailError(email);
-//    if (isEmailInvalid) {
-//       showErrorValidation(
-//          "#new-user-email-error",
-//          "Please enter your email address."
-//       );
-//       $("#email-sign-up").addClass("is-invalid");
-//    } else {
-//       $("#email-sign-up").removeClass("is-invalid");
-//       $("#email-sign-up").addClass("is-valid");
-//       showErrorValidation("#new-user-email-error", "");
-//    }
-// });
-
-// $("#email-sign-up").keyup(function (e) {
-//    const text = e.target.value;
-//    const textLegth = text.length;
-
-//    if (textLength < 0) {
-//       $("letsGoButton").addClass("disabled");
-//    }
-// });
-
-// $("#edit-imagery.input".keyup(function(e) {
-//    const imageryTextLength = $("#edit-imagery-char-count").val()
-//    const answerTextLength = $("#edit-answer-char-count").val()
-//    // do stuff with these values
-
-//    $("#Top-Bottom-Counter").html(function () {
-
-// });
-
-// }
-// });
-
-// // edit-imagery charachter counter
-// $("#edit-imagery-input").keyup(function (e) {
-//    console.log("Event: ", e);
-
-//    // get the text from the textarea
-//    const text = e.target.value;
-
-//    // check the length of the text
-//    const textLength = text.length;
-
-//    if (textLength > 240 || textLength < 1) {
-//       console.log("you are over 250 characters");
-
-//       document.getElementById("save-card").disabled = true;
-//       $("#Top-Bottom-Counter").toggleClass("text-danger text-muted");
-//    } else {
-//       document.getElementById("save-card").disabled = false;
-//    }
-
-//    //update the character counter on the page
-
-//    $("#edit-imagery-char-count").html(textLength);
-// });
-
-// // edit-answer charachter counter
-// $("#edit-answer-input, #edit-imagery-input").keyup(function (e) {
-//    console.log("Event: ", e);
-
-//    // get the text from the textarea
-//    const text = e.target.value;
-
-//    // check the length of the text
-//    const textLength2 = text.length;
-//    const textLength = text.length;
-
-//    if (textLength2 > 240 || textLength2 < 1) {
-//       console.log("you are over 250 characters");
-
-//       document.getElementById("save-card").disabled = true;
-//       $("#Top-Bottom-Counter").toggleClass("text-danger text-muted");
-//    } else {
-//       document.getElementById("save-card").disabled = false;
-//    }
-
-//    //update the character counter on the page
-//    $("#edit-imagery-char-count").html(textLength);
-//    $("#edit-answer-char-count").html(textLength2);
-// });

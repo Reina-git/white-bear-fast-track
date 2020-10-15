@@ -123,6 +123,7 @@ $("#letsGoButton").click(function () {
       $("#passwordLenth").removeClass("d-none");
       $("#password-sign-up").addClass("is-invalid");
       $("#enterPassword").addClass("d-none");
+      $("#differentPassword").addClass("d-none");
    } else if (
       lowerCasedPassword.includes(localEmail) &&
       localEmail.length >= 4
@@ -132,6 +133,7 @@ $("#letsGoButton").click(function () {
    } else {
       $("#enterPassword").addClass("d-none");
       $("#passwordLenth").addClass("d-none");
+      $("#differentPassword").addClass("d-none");
       $("#password-sign-up").removeClass("is-invalid");
    }
 });

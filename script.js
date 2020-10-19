@@ -22,12 +22,12 @@ $("#create-imagery-input").keyup(function (e) {
    // check the length of the text
    const textLength = text.length;
    if (textLength > 240 || textLength === 0) {
-      document.getElementById("save-card").disabled = true;
-      document.getElementById("char-count").classList.add("text-danger");
-      document.getElementById("char-count").classList.remove("text-muted");
+      $("#save-card").disabled = true;
+      $("#char-count").addClass("text-danger");
+      $("#char-count").removeClass("text-muted");
    } else {
-      document.getElementById("save-card").disabled = false;
-      document.getElementById("char-count").classList.add("text-muted");
+      $("#save-card").disabled = false;
+      $("#char-count").addClass("text-muted");
    }
    //update the character counter on the page
    $("#imagery-char-count").html(textLength);
@@ -42,23 +42,15 @@ $("#create-answer-input").keyup(function (e) {
    const textLength = text.length;
    if (textLength > 240 || textLength === 0) {
       $("#save-card").addClass("disabled");
-      document.getElementById("char-count").classList.add("text-danger");
-      document.getElementById("char-count").classList.remove("text-muted");
+      $("#char-count").addClass("text-danger");
+      $("#char-count").removeClass("text-muted");
    } else {
-      document.getElementById("save-card").disabled = false;
-      document.getElementById("char-count").classList.add("text-muted");
+      $("#save-card").disabled = false;
+      $("#char-count").addClass("text-muted");
    }
 
    $("#answer-char-count").html(textLength);
 });
-
-// $("#edit-cards-total").log(function (e) {
-//    $("#edit-imagery-input").keyup(function (e) {
-//       console.log("Event: ", e);
-//       const text = e.target.value;
-//       $("#edit-imagery-char-count").html(textLength);
-//    });
-// });
 
 $("#edit-imagery-input, #edit-answer-input").keyup(function () {
    const imageryInput = $("#edit-imagery-input").val();
@@ -98,36 +90,68 @@ $("#letsGoButton").click(function () {
    const delimiter = `@`;
    const indexOfEmail = lowerCasedEmail.indexOf(delimiter);
    const localEmail = emailInput.slice(0, indexOfEmail);
-
    // console.log(`the local part of ${emailInput} is ${localEmail}.`);
-
    // combine mostInsecurePasswords and secondMostInsecurePasswords
-
    const allPasswords = [
       ...mostInsecurePasswords,
       ...secondMostInsecurePasswords,
    ].flat();
    const allUniqPasswords = [...new Set(allPasswords)];
-
    const firstPasswords = allUniqPasswords.slice(
       0,
       allUniqPasswords.indexOf("skywalker")
    );
-
    const secondPasswords = allUniqPasswords.slice(
       allUniqPasswords.indexOf("skywalker") + 1,
       allUniqPasswords.indexOf("obama2016")
    );
-
    const thirdPasswords = allUniqPasswords.slice(
       allUniqPasswords.indexOf("obama2016") + 1
    );
-
    const firstAndSecondPassowords = firstPasswords.concat(secondPasswords);
-   const unacceptablePasswords = firstAndSecondPassowords.concat(
-      thirdPasswords
-   );
-   console.log(unacceptablePasswords);
+   const nonBooleanPasswrods = firstAndSecondPassowords.concat(thirdPasswords);
+   const password = [];
+   let firstunacceptablePasswords = [];
+
+   for (let i = 0; i < nonBooleanPasswrods.length; i++) {
+      const password = nonBooleanPasswrods[i];
+      if (typeof password === "boolean") {
+         // console.log("Yes");
+      } else {
+         firstunacceptablePasswords = firstunacceptablePasswords.concat(
+            password
+         );
+      }
+   }
+   // console.log(unacceptablePasswords);
+
+   // let onlyNumAsStringPasswords = [];
+   // let allStringPasswords = [];
+   // let unacceptablePasswords = [];
+
+   let stringPasswords = [];
+
+   for (let i = 0; i < firstunacceptablePasswords.length; i++) {
+      const password = firstunacceptablePasswords[i];
+      const passwordAsString = String(password);
+      // if (typeof password === "number") {
+      //    const numAsString = String(password);
+      //    // onlyNumAsStringPasswords = onlyNumAsStringPasswords.concat(numAsString);
+      //    stringPasswords = stringPasswords.concat(numAsString);
+      // } else {
+      //    // allStringPasswords = allStringPasswords.concat(password);
+      //    // unacceptablePasswords = allStringPasswords.concat(
+      //    //    onlyNumAsStringPasswords
+      //    // );
+      //    stringPasswords = stringPasswords.concat(password);
+      // }
+      stringPasswords = stringPasswords.concat(passwordAsString);
+   }
+   console.log("These are the string passwords:", stringPasswords);
+   // console.log("this is onlyNumAsStringPasswords:", onlyNumAsStringPasswords);
+   // console.log(unacceptablePasswords);
+   // console.log(allStringPasswords);
+   // console.log(allActualPasswords);
 
    if (emailInput.length < 1) {
       $("#email-error").removeClass("d-none");
@@ -161,7 +185,7 @@ $("#letsGoButton").click(function () {
          "All or part of your email address cannot be used in your password."
       );
       $("#password-sign-up").addClass("is-invalid");
-   } else if (unacceptablePasswords.includes(lowerCasedPassword)) {
+   } else if (firstSecondThirdPasswords.includes(lowerCasedPassword)) {
       $("#password-error").removeClass("d-none");
       $("#password-error").html(
          `Your password contains a commonly used password, ${passwordInput} can be easily discovered by attackers. Please use something else.`

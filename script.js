@@ -80,122 +80,123 @@ $("#edit-imagery-input, #edit-answer-input").keyup(function () {
 });
 
 $("#letsGoButton").click(function () {
-   const emailInput = $("#email-sign-up").val();
-   const passwordInput = $("#password-sign-up").val();
-   const lowerCasedPassword = passwordInput.toLowerCase();
-   const trimmedEmail = emailInput.trim();
-   const lowerCasedEmail = trimmedEmail.toLowerCase();
-   // can do multiple string methods in one line to one constant
-   const normalizedEmail = emailInput.trim().toLowerCase();
-   const delimiter = `@`;
-   const indexOfEmail = lowerCasedEmail.indexOf(delimiter);
-   const localEmail = emailInput.slice(0, indexOfEmail);
-   // console.log(`the local part of ${emailInput} is ${localEmail}.`);
-   // combine mostInsecurePasswords and secondMostInsecurePasswords
-   const allPasswords = [
-      ...mostInsecurePasswords,
-      ...secondMostInsecurePasswords,
-   ].flat();
-   const allUniqPasswords = [...new Set(allPasswords)];
-   const firstPasswords = allUniqPasswords.slice(
-      0,
-      allUniqPasswords.indexOf("skywalker")
-   );
-   const secondPasswords = allUniqPasswords.slice(
-      allUniqPasswords.indexOf("skywalker") + 1,
-      allUniqPasswords.indexOf("obama2016")
-   );
-   const thirdPasswords = allUniqPasswords.slice(
-      allUniqPasswords.indexOf("obama2016") + 1
-   );
-   const firstAndSecondPassowords = firstPasswords.concat(secondPasswords);
-   const nonBooleanPasswrods = firstAndSecondPassowords.concat(thirdPasswords);
-   const password = [];
-   let firstunacceptablePasswords = [];
+   // const emailInput = $("#sign-up-email-input").val();
+   //  const email = emailInput.trim().toLowerCase();
+   // const password = $("#sign-up-password-input").val();
+   // console.log(email);
 
-   for (let i = 0; i < nonBooleanPasswrods.length; i++) {
-      const password = nonBooleanPasswrods[i];
-      if (typeof password === "boolean") {
-         // console.log("Yes");
-      } else {
-         firstunacceptablePasswords = firstunacceptablePasswords.concat(
-            password
-         );
-      }
-   }
-   // console.log(unacceptablePasswords);
+   const user = {
+      email: getEmail(),
+      password: getPassword(),
+      createdAt: getCreatedAt(),
+      id: getId(),
+   };
+   const email = getEmail();
+   const password = getPassword();
+   const createdAt = getCreatedAt();
+   const id = getId();
 
-   // let onlyNumAsStringPasswords = [];
-   // let allStringPasswords = [];
-   // let unacceptablePasswords = [];
+   const passwordError = getPasswordError(password, email);
 
-   let stringPasswords = [];
-
-   for (let i = 0; i < firstunacceptablePasswords.length; i++) {
-      const password = firstunacceptablePasswords[i];
-      const passwordAsString = String(password);
-      // if (typeof password === "number") {
-      //    const numAsString = String(password);
-      //    // onlyNumAsStringPasswords = onlyNumAsStringPasswords.concat(numAsString);
-      //    stringPasswords = stringPasswords.concat(numAsString);
-      // } else {
-      //    // allStringPasswords = allStringPasswords.concat(password);
-      //    // unacceptablePasswords = allStringPasswords.concat(
-      //    //    onlyNumAsStringPasswords
-      //    // );
-      //    stringPasswords = stringPasswords.concat(password);
-      // }
-      stringPasswords = stringPasswords.concat(passwordAsString);
-   }
-   console.log("These are the string passwords:", stringPasswords);
-   // console.log("this is onlyNumAsStringPasswords:", onlyNumAsStringPasswords);
-   // console.log(unacceptablePasswords);
-   // console.log(allStringPasswords);
-   // console.log(allActualPasswords);
-
-   if (emailInput.length < 1) {
-      $("#email-error").removeClass("d-none");
-      $("#email-error").html(" Please enter your email address.");
-      $("#email-sign-up").addClass("is-invalid");
+   if (passwordError !== "") {
+      showError("#sign-up-password", passwordError);
    } else {
-      $("#email-error").addClass("d-none");
-      $("#email-sign-up").removeClass("is-invalid");
-      // console.log(`The trimmed and normalized email is ${localEmail}.`);
+      hideError("#sign-up-password", passwordError);
    }
-   // If there is no password then error message and red input box
-   if (passwordInput.length === 0) {
-      $("#password-error").removeClass("d-none");
-      $("#password-error").html("Please create a password.");
-      $("#password-sign-up").addClass("is-invalid");
 
-      // If the password is too short, then error message and red box but not other error messages
-   } else if (passwordInput.length < 9) {
-      $("#password-error").html("Your password must be at least 9 characters.");
-      $("#password-sign-up").addClass("is-invalid");
-      $("#password-error").removeClass("d-none");
-
-      // if the password is the same as the first part/ local of the email address and the local part
-      // is longer than 4 characters then error message and red box but not all other errors
-   } else if (
-      lowerCasedPassword.includes(localEmail) &&
-      localEmail.length >= 4
-   ) {
-      $("#password-error").removeClass("d-none");
-      $("#password-error").html(
-         "All or part of your email address cannot be used in your password."
-      );
-      $("#password-sign-up").addClass("is-invalid");
-   } else if (firstSecondThirdPasswords.includes(lowerCasedPassword)) {
-      $("#password-error").removeClass("d-none");
-      $("#password-error").html(
-         `Your password contains a commonly used password, ${passwordInput} can be easily discovered by attackers. Please use something else.`
-      );
-      $("#password-sign-up").addClass("is-invalid");
-      // else no error messages or red boxes
+   const emailError = getEmailError(email);
+   if (emailError !== "") {
+      showError("#sign-up-email", emailError);
    } else {
-      $("#email-error").addClass("d-none");
-      $("#password-error").addClass("d-none");
-      $("#differentPassword").addClass("d-none");
-      $("#password-sign-up").removeClass("is-invalid");
+      hideError("#sign-up-email", emailError);
    }
+
+   //  let whenButtonClicked = new Date(Date.now());
+   // whenButtonClicked = new Date(2020, 3, 1); //uncomment to test that the date is working.
+   // const year = whenButtonClicked.getFullYear();
+   // const month = whenButtonClicked.getMonth() + 1;
+   // const day = whenButtonClicked.getDate();
+   // const millisecond = whenButtonClicked.getMilliseconds();
+   // const millisecondString = String(millisecond);
+   // const yyyy = String(year);
+   // const unpaddedMonth = String(month);
+   // const unpaddedDay = String(day);
+
+   // function padLeft(str) {
+   //    // let str = "";
+   //    if (str.length < 2) {
+   //       str = 0 + str;
+   //    } else {
+   //       str = str;
+   //    }
+   //    return str;
+   // }
+   // const dd = padLeft(unpaddedDay);
+   // const mm = padLeft(unpaddedMonth);
+
+   // const results = yyyy + mm + dd;
+   // const createdAt = Number(results);
+   // // console.log(createdAt);
+
+   // const paddedMillisecondStr = millisecondString.padStart(3, "0");
+   // randomUniqId = getRandomInt(0, 999);
+   // randomUniqIdString = String(randomUniqId).padStart(3, "0");
+   // const id = randomUniqIdString + paddedMillisecondStr;
+   // console.log(id);
+
+   if (passwordError === "" && emailError === "") {
+      console.log(user);
+   }
+
+   const copyOfUser = { ...user }; // Object.assign({}, theNameOfYourObj)
+
+   // console.log(user);
+   // console.log(copyOfUser);
 });
+
+function getEmail() {
+   const emailInput = $("#sign-up-email-input").val();
+   const email = emailInput.trim().toLowerCase();
+   return email;
+}
+function getPassword() {
+   const password = $("#sign-up-password-input").val();
+   return password;
+}
+function getCreatedAt() {
+   new Date(Date.now());
+   return Date.now();
+}
+function getId() {
+   const whenButtonClicked = new Date(Date.now());
+   const millisecond = whenButtonClicked.getMilliseconds();
+   const millisecondString = String(millisecond);
+   const paddedMillisecondStr = millisecondString.padStart(3, "0");
+   randomUniqId = getRandomInt(0, 999);
+   randomUniqIdString = String(randomUniqId).padStart(3, "0");
+   const id = randomUniqIdString + paddedMillisecondStr;
+   return id;
+}
+
+function getEmailError(emailInput) {
+   if (emailInput.length === 0) {
+      return "Please enter your email address.";
+   } else {
+      return "";
+   }
+}
+
+function showError(element, message) {
+   $(`${element}-error`).html(message);
+   $(`${element}-input`).addClass("is-invalid");
+
+   // console.log(element);
+}
+function hideError(element, message) {
+   $(`${element}-error`).html(message);
+   $(`${element}-input`).removeClass("is-invalid");
+}
+// get a random number between 0 and 999
+function getRandomInt(min, max) {
+   return Math.floor(Math.random() * (max + 1 - min) + min);
+}

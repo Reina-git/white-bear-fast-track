@@ -1,6 +1,6 @@
 $("#letsGoButton").click(function () {
-   const emailInput = $("#email-sign-up").val();
-   const passwordInput = $("#password-sign-up").val();
+   const emailInput = $("#sign-up-email-input").val();
+   const passwordInput = $("#sign-up-password-input").val();
    const lowerCasedPassword = passwordInput.toLowerCase();
    const trimmedEmail = emailInput.trim();
    const lowerCasedEmail = trimmedEmail.toLowerCase();

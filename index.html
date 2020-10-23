@@ -37,31 +37,34 @@
                         <input
                            style=""
                            type="text"
-                           id="email-sign-up"
+                           id="sign-up-email-input"
                            class="form-control"
                            aria-label="Sizing example input"
                            aria-describedby="inputGroup-sizing-default"
                         />
                      </div>
                      <p
-                        class="text-danger lead mt-2 d-none"
-                        id="email-error"
+                        class="text-danger lead mt-2"
+                        id="sign-up-email-error"
                      ></p>
                      <p class="text-muted mt-3 lead">Create a password</p>
-
+                     <p class="text-muted lead">
+                        Must be at least 9 characters.
+                     </p>
                      <div class="input-group mb-3 mt-2">
                         <input
                            style=""
                            type="text"
-                           class="form-control .is-invalid"
-                           id="password-sign-up"
+                           class="form-control"
+                           id="sign-up-password-input"
                            aria-label="Sizing example input"
                            aria-describedby="inputGroup-sizing-default"
                         />
                      </div>
+
                      <p
-                        class="lead d-none mt-2 text-danger"
-                        id="password-error"
+                        class="lead mt-2 text-danger"
+                        id="sign-up-password-error"
                      ></p>
 
                      <button
@@ -92,6 +95,7 @@
                         class="form-control"
                         aria-label="Sizing example input"
                         aria-describedby="inputGroup-sizing-default"
+                        id="email-input"
                      />
                   </div>
 
@@ -102,13 +106,18 @@
                         type="text"
                         class="form-control"
                         aria-label="Sizing example input"
+                        id="password-input"
                         aria-describedby="inputGroup-sizing-default"
                      />
                   </div>
 
-                  <a href="create-answer.html" class="btn btn-success mt-5"
-                     >Login!</a
+                  <button
+                     href="create-answer.html"
+                     id="login-button"
+                     class="btn btn-success mt-5"
                   >
+                     Login!
+                  </button>
                </div>
             </div>
          </div>
@@ -120,5 +129,7 @@
    ></script>
    <script src="/mostInsecurePasswords.js" defer></script>
    <script src="/secondMostInsecurePasswords.js" defer></script>
+   <script src="/getPasswordError.js" defer></script>
    <script src="/script.js" defer></script>
+   <!-- <script src="/loginScripts.js" defer></script> -->
 </html>

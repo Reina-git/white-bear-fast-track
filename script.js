@@ -80,21 +80,42 @@ $("#edit-imagery-input, #edit-answer-input").keyup(function () {
 });
 
 $("#letsGoButton").click(function () {
-   // const emailInput = $("#sign-up-email-input").val();
-   //  const email = emailInput.trim().toLowerCase();
-   // const password = $("#sign-up-password-input").val();
-   // console.log(email);
-
    const user = {
       email: getEmail(),
       password: getPassword(),
       createdAt: getCreatedAt(),
       id: getId(),
+      emailTld: getTld(),
+      socialProfiles: [
+         {
+            site: "facebook",
+            siteId: "530c2716-36e2-4a80-93b7-0e8483d629e1",
+            username: "",
+            image: {
+               sm: "",
+               orig: "",
+            },
+         },
+         {
+            site: "twitter",
+            siteId: "79023b4d-57a2-406b-8efe-bda47fb1696c",
+            username: "",
+            image: {
+               sm: "",
+               md: "",
+               orig: "",
+            },
+         },
+      ],
    };
+
    const email = getEmail();
    const password = getPassword();
    const createdAt = getCreatedAt();
    const id = getId();
+   const emailTld = getTld();
+
+   // console.log(emailTld);
 
    const passwordError = getPasswordError(password, email);
 
@@ -111,47 +132,9 @@ $("#letsGoButton").click(function () {
       hideError("#sign-up-email", emailError);
    }
 
-   //  let whenButtonClicked = new Date(Date.now());
-   // whenButtonClicked = new Date(2020, 3, 1); //uncomment to test that the date is working.
-   // const year = whenButtonClicked.getFullYear();
-   // const month = whenButtonClicked.getMonth() + 1;
-   // const day = whenButtonClicked.getDate();
-   // const millisecond = whenButtonClicked.getMilliseconds();
-   // const millisecondString = String(millisecond);
-   // const yyyy = String(year);
-   // const unpaddedMonth = String(month);
-   // const unpaddedDay = String(day);
-
-   // function padLeft(str) {
-   //    // let str = "";
-   //    if (str.length < 2) {
-   //       str = 0 + str;
-   //    } else {
-   //       str = str;
-   //    }
-   //    return str;
-   // }
-   // const dd = padLeft(unpaddedDay);
-   // const mm = padLeft(unpaddedMonth);
-
-   // const results = yyyy + mm + dd;
-   // const createdAt = Number(results);
-   // // console.log(createdAt);
-
-   // const paddedMillisecondStr = millisecondString.padStart(3, "0");
-   // randomUniqId = getRandomInt(0, 999);
-   // randomUniqIdString = String(randomUniqId).padStart(3, "0");
-   // const id = randomUniqIdString + paddedMillisecondStr;
-   // console.log(id);
-
    if (passwordError === "" && emailError === "") {
       console.log(user);
    }
-
-   const copyOfUser = { ...user }; // Object.assign({}, theNameOfYourObj)
-
-   // console.log(user);
-   // console.log(copyOfUser);
 });
 
 function getEmail() {
@@ -159,6 +142,15 @@ function getEmail() {
    const email = emailInput.trim().toLowerCase();
    return email;
 }
+
+function getTld(email) {
+   const emailInput = $("#sign-up-email-input").val();
+   const emailToSplit = emailInput.trim().toLowerCase();
+   const splitEmail = emailToSplit.split(".");
+   const emailTld = splitEmail[1];
+   return emailTld;
+}
+
 function getPassword() {
    const password = $("#sign-up-password-input").val();
    return password;
@@ -199,4 +191,13 @@ function hideError(element, message) {
 // get a random number between 0 and 999
 function getRandomInt(min, max) {
    return Math.floor(Math.random() * (max + 1 - min) + min);
+}
+function padLeft(str) {
+   // let str = "";
+   if (str.length < 2) {
+      str = 0 + str;
+   } else {
+      str = str;
+   }
+   return str;
 }

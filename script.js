@@ -115,7 +115,22 @@ $("#letsGoButton").click(function () {
    const id = getId();
    const emailTld = getTld();
 
-   // console.log(emailTld);
+   let activeUser = deepCopy(user);
+   activeUser.isActive = true;
+   activeUser.createdAt = Date.now(createdAt);
+
+   // for (let i = 0; i < activeUser.socialProfiles.length; i++) {
+   //    const socialProfile = activeUser.socialProfiles[i];
+   //    delete socialProfile.image.sm;
+   //    delete socialProfile.image.md;
+   // }
+
+   activeUser.socialProfiles.forEach((socialProfile) => {
+      delete socialProfile.image.sm;
+      delete socialProfile.image.md;
+   });
+
+   console.log(activeUser);
 
    const passwordError = getPasswordError(password, email);
 
@@ -134,6 +149,7 @@ $("#letsGoButton").click(function () {
 
    if (passwordError === "" && emailError === "") {
       console.log(user);
+      console.log(activeUser);
    }
 });
 
@@ -157,7 +173,25 @@ function getPassword() {
 }
 function getCreatedAt() {
    new Date(Date.now());
-   return Date.now();
+   let whenButtonClicked = new Date(Date.now());
+   whenButtonClicked = new Date(2020, 3, 1); //uncomment to test that the date is working.
+   const year = whenButtonClicked.getFullYear();
+   const month = whenButtonClicked.getMonth() + 1;
+   const day = whenButtonClicked.getDate();
+   // const millisecond = whenButtonClicked.getMilliseconds();
+   // const millisecondString = String(millisecond);
+   const yyyy = String(year);
+   const unpaddedMonth = String(month);
+   const unpaddedDay = String(day);
+
+   const dd = padLeft(unpaddedDay);
+   const mm = padLeft(unpaddedMonth);
+
+   const results = yyyy + mm + dd;
+   const dateCreated = Number(results);
+   // console.log(createdAt);
+
+   return dateCreated;
 }
 function getId() {
    const whenButtonClicked = new Date(Date.now());
@@ -192,6 +226,30 @@ function hideError(element, message) {
 function getRandomInt(min, max) {
    return Math.floor(Math.random() * (max + 1 - min) + min);
 }
+function padLeft(str) {
+   // let str = "";
+   if (str.length < 2) {
+      str = 0 + str;
+   } else {
+      str = str;
+   }
+   return str;
+}
+function deepCopy(obj) {
+   const str = JSON.stringify(obj); // json.stringify() turns the object into a string
+   return safelyParseJson(str);
+}
+
+function safelyParseJson(str) {
+   try {
+      JSON.parse(str);
+   } catch {
+      // if error return the original value
+      return str;
+   }
+   return JSON.parse(str);
+}
+
 function padLeft(str) {
    // let str = "";
    if (str.length < 2) {

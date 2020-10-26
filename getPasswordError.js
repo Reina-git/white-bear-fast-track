@@ -44,52 +44,86 @@ function getUnacceptablePasswords() {
    //    const password = [];
    let stringsAndNumbersPasswords = [];
 
-   for (let i = 0; i < nonBooleanPasswords.length; i++) {
-      const password = nonBooleanPasswords[i];
+   // for (let i = 0; i < nonBooleanPasswords.length; i++) {
+   //    const password = nonBooleanPasswords[i];
+   //    if (typeof password === "boolean") {
+   //       // console.log("Yes");
+   //    } else {
+   //       stringsAndNumbersPasswords = stringsAndNumbersPasswords.concat(
+   //          password
+   //       );
+   //    }
+   // }
+   // nonBooleanPasswords.forEach(function (password) {
+   //    if (typeof password === "boolean") {
+   //       //  console.log("Yes");
+   //    } else {
+   //       stringsAndNumbersPasswords = stringsAndNumbersPasswords.concat(
+   //          password
+   //       );
+   //    }
+   // });
+   nonBooleanPasswords.forEach((password) => {
       if (typeof password === "boolean") {
-         // console.log("Yes");
+         //  console.log("Yes");
       } else {
          stringsAndNumbersPasswords = stringsAndNumbersPasswords.concat(
             password
          );
       }
-   }
+   });
 
    let stringPasswords = [];
 
-   for (let i = 0; i < stringsAndNumbersPasswords.length; i++) {
-      const password = stringsAndNumbersPasswords[i];
+   // for (let i = 0; i < stringsAndNumbersPasswords.length; i++) {
+   //    const password = stringsAndNumbersPasswords[i];
+   //    const passwordAsString = String(password);
+   //    stringPasswords = stringPasswords.concat(passwordAsString);
+   // }
+
+   stringsAndNumbersPasswords.forEach((password) => {
       const passwordAsString = String(password);
       stringPasswords = stringPasswords.concat(passwordAsString);
-   }
+   });
    // console.log("These are the string passwords:", stringPasswords);
    let reversePasswords = [];
    // make a list of passwords with characters reversed
-   for (let i = 0; i < stringPasswords.length; i++) {
-      const password = stringPasswords[i];
-      // turns a string into an array of characters
+   // for (let i = 0; i < stringPasswords.length; i++) {
+   //    const password = stringPasswords[i];
+   //    // turns a string into an array of characters
+   //    const passwordChars = password.split("");
+   //    const copyOfPasswordChars = [...passwordChars];
+   //    // reverses an array
+   //    const reversePasswordChars = copyOfPasswordChars.reverse();
+   //    // turns an array into a string
+   //    const reversePassword = reversePasswordChars.join("");
+   //    // combines each string into an array of strings as it passes through the for loop
+   //    reversePasswords = reversePasswords.concat(reversePassword);
+   // }
+
+   stringPasswords.forEach((password) => {
       const passwordChars = password.split("");
-      const copyOfPasswordChars = [...passwordChars];
-      // reverses an array
-      const reversePasswordChars = copyOfPasswordChars.reverse();
-      // turns an array into a string
-      const reversePassword = reversePasswordChars.join("");
-      // combines each string into an array of strings as it passes through the for loop
+      const copyOfPasswordChars = [...passwordChars]; // reverses an array
+      const reversePasswordChars = copyOfPasswordChars.reverse(); // turns an array into a string
+      const reversePassword = reversePasswordChars.join(""); // combines each string into an array of strings as it passes through the for loop
       reversePasswords = reversePasswords.concat(reversePassword);
-   }
+   });
    // combines the new list of reversed passwords with the old list
    const reverseAndForwardPasswords = stringPasswords.concat(reversePasswords);
 
    let normalizedPasswords = [];
 
-   for (let i = 0; i < reverseAndForwardPasswords.length; i++) {
-      const normalizedPassword = reverseAndForwardPasswords[i].toLowerCase();
+   // for (let i = 0; i < reverseAndForwardPasswords.length; i++) {
+   //    const normalizedPassword = reverseAndForwardPasswords[i].toLowerCase();
+   //    normalizedPasswords = normalizedPasswords.concat(normalizedPassword);
+   // }
+   reverseAndForwardPasswords.forEach((password) => {
+      const normalizedPassword = password.toLowerCase();
       normalizedPasswords = normalizedPasswords.concat(normalizedPassword);
-   }
-
+   });
    const unacceptablePasswords = [...new Set(normalizedPasswords)];
 
-   //    console.log(allUnacceptablePasswords);
+   console.log(unacceptablePasswords);
 
    return unacceptablePasswords;
 }

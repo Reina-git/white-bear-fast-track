@@ -130,7 +130,31 @@ $("#letsGoButton").click(function () {
       delete socialProfile.image.md;
    });
 
-   console.log(activeUser);
+   // console.log(activeUser);
+
+   const users = [user, activeUser];
+
+   const currentUsers = users
+      .map((user) => {
+         const newUser = {
+            id: user.id,
+            email: user.email,
+            password: user.password,
+            createdAt: user.createdAt,
+            // isActive: user.isActive,
+            isActive: getUserStatus(user),
+         };
+         return newUser;
+      })
+      .filter((user) => {
+         return user.isActive === true;
+      });
+
+   // console.log(users);
+   const currentUser = [...currentUsers];
+
+   console.log(currentUsers);
+   console.log(currentUser);
 
    const passwordError = getPasswordError(password, email);
 
@@ -152,6 +176,14 @@ $("#letsGoButton").click(function () {
       console.log(activeUser);
    }
 });
+function getUserStatus(user) {
+   const userStatus = "";
+   // console.log(user);
+   if (user.isActive === undefined) {
+      return (status = false);
+   }
+   return user.isActive;
+}
 
 function getEmail() {
    const emailInput = $("#sign-up-email-input").val();
@@ -174,7 +206,7 @@ function getPassword() {
 function getCreatedAt() {
    new Date(Date.now());
    let whenButtonClicked = new Date(Date.now());
-   whenButtonClicked = new Date(2020, 3, 1); //uncomment to test that the date is working.
+   // whenButtonClicked = new Date(2020, 3, 1); //uncomment to test that the date is working.
    const year = whenButtonClicked.getFullYear();
    const month = whenButtonClicked.getMonth() + 1;
    const day = whenButtonClicked.getDate();

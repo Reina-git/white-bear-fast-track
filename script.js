@@ -115,6 +115,10 @@ $("#letsGoButton").click(function () {
    const id = getId();
    const emailTld = getTld();
 
+   // const emailPattern = /^[a-zA-Z0-9_][a-zA-Z0-9_\.\+\-]*@[a-zA-Z0-9][a-zA-Z0-9\_\-]+\.[a-zA-Z]{2,}$/;
+   // const isValidEmail = emailPattern.test(email);
+   // console.log(isValidEmail);
+
    let activeUser = deepCopy(user);
    activeUser.isActive = true;
    activeUser.createdAt = Date.now(createdAt);
@@ -142,7 +146,7 @@ $("#letsGoButton").click(function () {
             password: user.password,
             createdAt: user.createdAt,
             // isActive: user.isActive,
-            isActive: getUserStatus(user),
+            isActive: getUserStatus(user.isActive),
          };
          return newUser;
       })
@@ -150,7 +154,7 @@ $("#letsGoButton").click(function () {
          return user.isActive === true;
       });
 
-   // console.log(users);
+   console.log(users);
    const currentUser = [...currentUsers];
 
    console.log(currentUsers);
@@ -176,13 +180,13 @@ $("#letsGoButton").click(function () {
       console.log(activeUser);
    }
 });
-function getUserStatus(user) {
-   const userStatus = "";
+
+function getUserStatus(status) {
    // console.log(user);
-   if (user.isActive === undefined) {
-      return (status = false);
+   if (status === undefined) {
+      return false;
    }
-   return user.isActive;
+   return status;
 }
 
 function getEmail() {
@@ -237,8 +241,13 @@ function getId() {
 }
 
 function getEmailError(emailInput) {
+   const emailPattern = /^\w.*@[a-zA-Z\d][\w-]+\.[a-zA-Z]{2,}$/;
+   const isValidEmail = "";
+   // const isValidEmail = emailPattern.test(email);
    if (emailInput.length === 0) {
       return "Please enter your email address.";
+   } else if (emailPattern.test(emailInput) === false) {
+      return "Please enter a valid email address.";
    } else {
       return "";
    }
